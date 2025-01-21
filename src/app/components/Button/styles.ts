@@ -6,7 +6,7 @@ type ButtonProps = {
 }
 
 export const Container = styled.button<ButtonProps>`
-  padding: 10px 32px;
+  padding: 14px 24px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   border: none;
