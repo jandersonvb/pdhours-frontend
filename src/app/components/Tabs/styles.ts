@@ -7,7 +7,8 @@ export const Container = styled.div`
 
   margin-left: 190px;
   margin-top: 24px;
-`
+
+  `
 
 export const NavItem = styled.a<{ active?: boolean }>`
   text-decoration: none;
@@ -16,11 +17,13 @@ export const NavItem = styled.a<{ active?: boolean }>`
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
   position: relative;
+  transition: color 0.6s ease-in-out;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -4px;
+
+    bottom: -10px;
     left: 0;
     width: 100%;
     height: 5px;
@@ -32,7 +35,7 @@ export const NavItem = styled.a<{ active?: boolean }>`
 
   &:hover {
     font-weight: bold;
-
+    color:  #1e90ff;
    
   }
 

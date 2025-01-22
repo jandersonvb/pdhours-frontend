@@ -1,10 +1,14 @@
 import { Container, NavItem } from "./styles";
 
-export function Tabs() {
+type TabsProps = {
+  active?: boolean
+}
+
+export function Tabs({ active }: TabsProps) {
   return (
     <Container>
-      <NavItem>Squads</NavItem>
-      <NavItem>Usuários</NavItem>
+      <NavItem active={active}>Squads</NavItem>
+      <NavItem active={active}>Usuário</NavItem>
     </Container>
   )
 }
