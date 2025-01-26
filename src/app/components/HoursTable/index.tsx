@@ -5,11 +5,18 @@ interface Member {
   name: string;
   description: string;
   hours: number;
-  createdAt: string;  
+  createdAt: string;
 }
 
 export function HoursTable({ members }: { members: Member[] }) {
-  return (
+  return (<>
+    <h1
+      style={{
+        textAlign: 'center',
+        fontFamily: 'Roboto, sans-serif'
+      }}
+    >Horas por membro</h1>
+
     <TableContainer>
       <TableHead>
         <TableRow>
@@ -30,5 +37,36 @@ export function HoursTable({ members }: { members: Member[] }) {
         ))}
       </TableBody>
     </TableContainer>
+    <h1
+      style={{
+        textAlign: 'center',
+        fontFamily: 'Roboto, sans-serif'
+      }}>
+      Horas totais da squad
+    </h1>
+    <h2
+      style={{
+        textAlign: 'center',
+        fontFamily: 'Roboto, sans-serif',
+        color: '#4263eb'
+      }}>
+      {members.reduce((acc, member) => acc + member.hours, 0)} horas
+    </h2>
+    <h1
+      style={{
+        textAlign: 'center',
+        fontFamily: 'Roboto, sans-serif'
+      }}>
+      Média de horas por dia
+    </h1>
+    <h2
+      style={{
+        textAlign: 'center',
+        fontFamily: 'Roboto, sans-serif',
+        color: '#4263eb'
+      }}>
+      {Math.ceil(members.reduce((acc, member) => acc + member.hours, 0) / members.length)} horas/dia
+    </h2>
+  </>
   );
 }
