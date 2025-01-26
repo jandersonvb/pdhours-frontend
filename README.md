@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PD Hours Control
 
-## Getting Started
+Este projeto é uma aplicação desenvolvida em [Next.js](https://nextjs.org/) baseada no design disponível no [Figma](https://www.figma.com/design/PeJGyGTwHcUj0K3zADkXbA/PD-Hours?node-id=0-1&p=f&t=eauvObYMpw9kksud-0). A aplicação é voltada para a gestão de horas trabalhadas por squads e funcionários, incluindo relatórios detalhados.
 
-First, run the development server:
+## Recursos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Módulo Employees**: Cadastro e gerenciamento de funcionários.
+- **Módulo Squads**: Organização de equipes para controle de projetos.
+- **Módulo Reports**: Geração de relatórios sobre as horas trabalhadas.
+
+## Pré-requisitos
+
+- [Node.js](https://nodejs.org/) (versão 18 ou superior).
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/).
+- Banco de dados [MySQL](https://www.mysql.com/) 
+
+## Configuração do projeto
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/jandersonvb/pdhours-frontend.git
+   cd pd-hours-frontend
+   ```
+
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+
+
+
+## Scripts disponíveis
+
+- `dev`: Inicia o servidor de desenvolvimento.
+
+  ```bash
+  npm run dev
+  ```
+
+## Estrutura do Projeto
+
+```
+.
+├── public
+├── src
+│   ├── components    # Componentes reutilizáveis
+│   ├── styles        # Estilos globais e específicos
+└──
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design no Figma
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Todo o design foi baseado no protótipo do Figma: [PD Hours](https://www.figma.com/design/PeJGyGTwHcUj0K3zADkXbA/PD-Hours?node-id=0-1&p=f&t=eauvObYMpw9kksud-0).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Licença
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob a licença [MIT](./LICENSE).

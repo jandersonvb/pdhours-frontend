@@ -7,19 +7,15 @@ import { Navbar } from "./components/Navbar";
 import { Button } from "./components/Button";
 import { Tabs } from "./components/Tabs";
 import { DateFilter } from "./components/DateFilter";
-
+import GlobalStyles from "./styles/global";
 
 const squadHeaders = ["ID", "Nome", ""];
 const squadData = [
-  ["1", "Squad Alpha",<Button>Visitar squad</Button>], 
+  ["1", "Squad Alpha", <Button>Visitar squad</Button>],
   ["2", "Squad Beta", <Button>Visitar squad</Button>],
 ];
 
-const membersHeaders = ["Membro", "Descrição", "Horas", "Criado em"];
-const membersData = [
-  ["John Doe", "Desenvolvedor", "8h", "2025-01-26"],
-  ["Jane Smith", "Designer", "5h", "2025-01-26"],
-];
+
 
 
 const members = [
@@ -50,13 +46,14 @@ const members = [
 export default function Home() {
   return (
     <>
+    <GlobalStyles />
       <Navbar />
       <Tabs />
       <DateFilter />
-      <HoursTable
-        members={members}
-      />
       <DinamicTable headers={squadHeaders} data={squadData} />
+      {/* <HoursTable
+        members={members}
+      /> */}
     </>
   );
 }
