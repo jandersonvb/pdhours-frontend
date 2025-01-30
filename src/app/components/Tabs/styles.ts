@@ -19,6 +19,7 @@ export const NavItem = styled.a<{ active?: boolean }>`
   position: relative;
   transition: color 0.6s ease-in-out;
 
+ 
   &::after {
     content: '';
     position: absolute;
@@ -27,15 +28,17 @@ export const NavItem = styled.a<{ active?: boolean }>`
     left: 0;
     width: 100%;
     height: 5px;
-    background-color: #1e90ff;
+    background-color: #4263EB;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.6s ease-in-out;
+
+
   }
 
   &:hover {
     font-weight: bold;
-    color:  #1e90ff;
+    color: #4263EB;
    
   }
 

@@ -6,11 +6,7 @@ export function DateFilter() {
     <Container>
       <WrapperStartDate>
         <label htmlFor="startDate" className="block text-gray-500">Início</label>
-        <input
-          type="date"
-          id="startDate"
-          className="border p-2 rounded"
-        />
+        <input type="date" id="startDate" className="border p-2 rounded" />
       </WrapperStartDate>
       <WrapperEndDate>
         <label htmlFor="endDate" className="block text-gray-500">Fim</label>

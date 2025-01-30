@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Navbar } from "./components/Navbar";
+import { Tabs } from "./components/Tabs";
+import { ContextProvider } from "./components/ContextProvider";
 
 export const metadata: Metadata = {
-  title: "PDHours - Controle de horas"
- 
+  title: "PDHours - Controle de horas",
+  description: "Interface para lançamento de horas",
+
 };
 
 export default function RootLayout({
@@ -23,8 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+        <ContextProvider>
+          <Navbar />
+          <Tabs />
+          <main>{children}</main>
+        </ContextProvider>
       </body>
     </html>
   );

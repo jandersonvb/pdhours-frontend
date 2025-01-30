@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const TableWrapper = styled.div`
- width: 783px;
+  width: 783px;
   border-collapse: collapse;
   margin-top: 32px;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
 
-  //alinhar a tabela no centro
   margin-left: auto;
   margin-right: auto;  
 
@@ -15,7 +15,7 @@ export const TableWrapper = styled.div`
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
-  text-align: left;
+  text-align: center;  
   
 
   th {
@@ -37,6 +37,7 @@ export const Table = styled.table`
   td {
     padding: 12px;
     border-top: 1px solid #ddd;
+    
   }
 
   tr:hover {

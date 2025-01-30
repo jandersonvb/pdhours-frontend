@@ -17,7 +17,9 @@ export const Header = styled.div`
 `
 
 export const Title = styled.h1`
-  font-size: 50px;
   font-family: 'Roboto', sans-serif;  
-  color: #333;
+  font-size: 24px;
+  font-weight: 500;
+  color: #1F2937;
+  margin-right: 24px;
 `

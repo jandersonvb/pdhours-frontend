@@ -1,19 +1,5 @@
 'use client'
 
-import { DinamicTable } from "./components/DinamicTable";
-import { HoursTable } from "./components/HoursTable";
-import { Navbar } from "./components/Navbar";
-
-import { Button } from "./components/Button";
-import { Tabs } from "./components/Tabs";
-import { DateFilter } from "./components/DateFilter";
-import GlobalStyles from "./styles/global";
-
-const squadHeaders = ["ID", "Nome", ""];
-const squadData = [
-  ["1", "Squad Alpha", <Button>Visitar squad</Button>],
-  ["2", "Squad Beta", <Button>Visitar squad</Button>],
-];
 
 
 
@@ -46,14 +32,8 @@ const members = [
 export default function Home() {
   return (
     <>
-    <GlobalStyles />
-      <Navbar />
-      <Tabs />
-      <DateFilter />
-      <DinamicTable headers={squadHeaders} data={squadData} />
-      {/* <HoursTable
-        members={members}
-      /> */}
+
+     
     </>
   );
 }
