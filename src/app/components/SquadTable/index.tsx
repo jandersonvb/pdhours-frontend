@@ -19,18 +19,13 @@ export function SquadTable() {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  //Aqui é feita a requisição para a API para buscar as squads
+  // Função para buscar as squads
   useEffect(() => {
     const fetchSquads = async () => {
       try {
-        const response = await fetch('http://localhost:3000/squad');
+        const response = await axios.get('http://localhost:3000/squad');
 
-        if (!response.ok) {
-          throw new Error('Erro ao buscar squads');
-        }
-        const data = await response.json();
-
-        setSquads(data);
+        setSquads(response.data);
       } catch (err) {
         if (err instanceof Error) {
           setError('Estamos com problemas para buscar as squads');

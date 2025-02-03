@@ -6,6 +6,7 @@ import { XIcon, AlertCircle, TriangleAlert } from 'lucide-react';
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { ModalContainer, Title, ErrorBox, Textarea, ButtonContainer, TextareaContainer } from "./styles";
+import axios from "axios";
 
 
 export function ReportModal() {
@@ -16,31 +17,35 @@ export function ReportModal() {
   const [success, setSuccess] = useState('');
 
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!userId) {
-      setError('ID do usuário é obrigatório');
+      setError("ID do usuário é obrigatório");
+      return;
     } else if (!hours) {
-      setError('Horas gastas é obrigatório');
-    }
-    else if (!description) {
-      setError('Descrição é obrigatória');
+      setError("Horas gastas é obrigatório");
+      return;
+    } else if (!description) {
+      setError("Descrição é obrigatória");
       return;
     }
 
-    //acessar a API para criar o lançamento
-    const data = fetch('https://localhost:3000/reports', {
-      method: 'POST',
-      body: JSON.stringify({
+    try {
+      await axios.post("https://localhost:3000/reports", {
         userId,
         hours,
         description,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+      });
 
+      setSuccess("Lanmçamento criado com sucesso!");
+      setUserId("");
+      setHours("");
+      setDescription("");
+      setError("");
+    } catch (err) {
+      setError("Erro ao criar o lançamento. Tente novamente.");
+    }
   };
+
 
 
 

@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { ButtonContainer, ModalContainer, Title } from "./styles";
+import axios from "axios";
+import { TriangleAlert, XIcon } from "lucide-react";
+import { ErrorBox } from "../Navbar/styles";
 
 type SquadModalProps = {
   onAddSquad: (name: string) => void;
@@ -12,47 +15,62 @@ export function SquadModal({ onAddSquad }: SquadModalProps) {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSubmit = () => {
-    if (!name) {
+  const handleSubmit = async () => {
+    if (!name.trim()) {
       setError('Nome da squad é obrigatório');
       return;
     }
 
-    //acessar a API para criar a squad
-    const data = fetch('https://localhost:3000/squads', {
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      const { status } = await axios.post('http://localhost:3000/squad', { name });
 
-    //chamar a função de callback
-    onAddSquad(name);
+      if (status === 201) {
+        onAddSquad(name);
+        resetForm();
+      } else {
+        setError('Erro ao criar squad');
+      }
+    } catch (error) {
+      console.error(error);
+      setError('Erro ao criar squad');
+    }
+  };
 
-    //limpar o campo de nome
+  const resetForm = () => {
     setName('');
-
-    //fechar o modal
-    setIsModalOpen(false);
-
-    //limpar o erro
     setError('');
+    setIsModalOpen(false);
   };
 
   return (
     <ModalContainer>
       <Title>Criar Squad</Title>
-      <Input 
+      <Input
         type="text"
         label="Nome"
         placeholder="Digite o nome da squad"
         value={name}
         onChange={(e) => setName(e.target.value)}
         hasError={!!error}
+
       />
+
+      {error && (
+        <ErrorBox>
+          <TriangleAlert
+            size={18}
+            style={{ cursor: 'pointer' }}
+            onClick={() => setError('')}
+          />
+          <span style={{ marginLeft: '8px' }}>{error}</span>
+          <XIcon
+            size={18}
+            style={{ cursor: 'pointer', display: 'block', marginLeft: 'auto' }}
+            onClick={() => setError('')}
+          />
+        </ErrorBox>
+      )}
+
       <ButtonContainer>
         <Button onClick={handleSubmit}>Criar Squad</Button>
       </ButtonContainer>

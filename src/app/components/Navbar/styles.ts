@@ -25,8 +25,6 @@ export const Container = styled.nav`
   left: 0;
   right: 0;
   margin-left: auto;
-  
-  
 `
 
 export const Header = styled.div`
@@ -66,3 +64,13 @@ export const Content = styled.div`
 
 
 `
+export const ErrorBox = styled.div`
+  background: #fdecea;
+  color: #e74c3c; 
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 10px;
+`;
