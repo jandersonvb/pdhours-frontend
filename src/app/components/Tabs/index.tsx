@@ -1,21 +1,24 @@
 'use client';
 
 import Link from "next/link";
-import { Container, NavItem } from "./styles";
+import { useState } from "react";
+import { Tab, TabsContainer } from "./styles";
 
 type TabsProps = {
   active?: boolean
 }
 
 export function Tabs({ active }: TabsProps) {
+  const [activeTab, setActiveTab] = useState(active ? 'squads' : 'usuarios')
+
   return (
-    <Container>
-      <Link href="/squad" style={{ textDecoration: 'none', color: 'black' }}>
-        <NavItem active={active}>Squads</NavItem>
-      </Link>
-      <Link href="/user" style={{ textDecoration: 'none', color: 'black' }}>
-        <NavItem active={active}>Usuários</NavItem>
-      </Link>
-    </Container>
+    <TabsContainer>
+      <Tab active={activeTab === 'squads'} onClick={() => setActiveTab('squads')}>
+        <Link href="/squad">Squads</Link>
+      </Tab>
+      <Tab active={activeTab === 'usuarios'} onClick={() => setActiveTab('usuarios')}>
+        <Link href="/user">Usuários</Link>
+      </Tab>
+    </TabsContainer>
   )
 }
