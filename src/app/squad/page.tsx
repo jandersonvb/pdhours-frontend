@@ -7,7 +7,7 @@ export default function Squad() {
   return (
     <Container>
       <Title>Lista de Squads</Title>
-      <SquadTable /> {/* Renderização da tabela de squads */}
+      <SquadTable /> 
     </Container>
   );
 }
