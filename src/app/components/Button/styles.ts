@@ -18,10 +18,10 @@ export const Container = styled.button<ButtonProps>`
     switch ($variant) {
       case 'primary':
         return css`
-          background-color: ${disabled ? '#b3d4fc' : '#0056D2'};
+          background-color: ${disabled ? '#b3d4fc' : '#4263EB'};
           color: ${disabled ? '#ffffff' : '#ffffff'};
           &:hover {
-            background-color: ${disabled ? '#b3d4fc' : '#2342C0'};
+            background-color: ${disabled ? '#b3d4fc' : '#1d4ed8'};
           }
         `
       case 'secondary':
