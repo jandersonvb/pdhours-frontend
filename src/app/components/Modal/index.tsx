@@ -1,30 +1,29 @@
-/**
- * 
- * Crie um modal que será utilizado para exibir informações de um membro do squad.
- * 
- * O modal deve conter:
- * - Nome da squad (label)
- * -input para o nome da squad
- * - botão para fechar o modal
- * -botão "Criar squad"
- * 
- *  * 
- */
+import { ReactNode } from "react";
+import { X } from "lucide-react";
+import { Content, Dialog, DialogContent, DialogHeader, DialogTitle } from "./style";
 
-import { Container } from "./style";
+type ModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
+};
 
-export function Modal() {
+export default function Modal({ isOpen, onClose, children }: ModalProps) {
   return (
-    <Container>
-      <WrapperSquadName>
-        <label htmlFor="squadName" className="block text-gray-500">Nome da squad</label>
-        <input type="text" id="squadName" className="border p-2 rounded" />
-      </WrapperSquadName>
-      <Button
-        variant="primary"
-      >
-        Criar squad
-      </Button>
-    </Container>
-  )
+    <Dialog open={isOpen} $onOpenChange={onClose}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>
+            <X
+              onClick={onClose}
+              style={{ cursor: "pointer", color: "GrayText" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "black")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "gray")}
+            />
+          </DialogTitle>
+        </DialogHeader>
+        <Content>{children}</Content>
+      </DialogContent>
+    </Dialog>
+  );
 }
