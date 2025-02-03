@@ -9,7 +9,7 @@ type ButtonProps = {
 
 export function Button({ children, variant = 'primary', disabled = false, onClick }: ButtonProps) {
   return (
-    <Container variant={variant} disabled={disabled} onClick={onClick}>
+    <Container $variant={variant} disabled={disabled} onClick={onClick}>
       {children}
     </Container>
   )

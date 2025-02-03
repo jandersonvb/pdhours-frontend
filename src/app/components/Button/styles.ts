@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 type ButtonProps = {
-  variant?: 'primary' | 'secondary' | 'alternate'
+  $variant?: 'primary' | 'secondary' | 'alternate'
   disabled?: boolean
 }
 
@@ -14,8 +14,8 @@ export const Container = styled.button<ButtonProps>`
   cursor: pointer;
   transition: all 0.3s ease;
 
-  ${({ variant, disabled }) => {
-    switch (variant) {
+  ${({ $variant, disabled }) => {
+    switch ($variant) {
       case 'primary':
         return css`
           background-color: ${disabled ? '#b3d4fc' : '#0056D2'};
