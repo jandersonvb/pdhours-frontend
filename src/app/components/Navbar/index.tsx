@@ -1,18 +1,37 @@
 'use client';
 
+import { useState } from "react";
 import { Button } from "../Button";
 import { Logo } from "../Logo";
-import { Container, Title, Header } from "./styles";
-
+import Modal from "../Modal";
+import { ReportModal } from "../ReportModal";
+import { Container, ContainerLogo, Header, Title } from "./styles";
+import Link from "next/link";
 
 export function Navbar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleOpenModal() {
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
+  
   return (
     <Container>
-      <Logo />
+      <ContainerLogo as={Link} href="/">
+        <Logo />
+      </ContainerLogo>
       <Header>
         <Title>PD Hours</Title>
-        <Button>Lançar horas</Button>
+        <Button onClick={handleOpenModal}>Lançar horas</Button>
       </Header>
+
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+        <ReportModal />
+      </Modal>
     </Container>
-  )
+  );
 }
