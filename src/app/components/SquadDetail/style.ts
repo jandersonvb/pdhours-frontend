@@ -1,5 +1,37 @@
 import styled from "styled-components";
 
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  
+`;
+
+export const Title = styled.h1`
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const ContainerInput = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 16px;
+
+  & > button {
+    margin-top: 24px;
+    width: 100%;
+  }
+`;
+
+
+
+
 export const TableContainer = styled.div`
   background: white;
   border-radius: 12px;
@@ -12,14 +44,16 @@ export const TableContainer = styled.div`
   flex-direction: column;
   display: flex;
 
+
   & > button {
     margin-top: 64px;
   }
- 
+
 `;
 
 export const Table = styled.table`
   width: 100%;  
+  
 
   thead {
     background: #f4f5f7;
@@ -28,6 +62,7 @@ export const Table = styled.table`
 
   tbody tr:nth-child(odd) {
     background: #f9f9f9;
+    
   }
 
   tbody tr:hover {
@@ -35,14 +70,15 @@ export const Table = styled.table`
   }
 
   th, td {
-    padding: 22px;
-
+    padding: 12px;
+    
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    text-align: center;
+    text-align: center;  
+
   }
 
- 
+
   th:first-child, td:first-child {
     border-radius: 8px 0 0 0;
   }
@@ -60,12 +96,24 @@ export const Th = styled.th`
   background: #4f6ef7;
   color: white;
   padding: 12px;
+  text-align: center;
   border-radius: 8px 8px 0 0;
+ 
 `;
 
 export const Td = styled.td`
   padding: 10px;
   border-bottom: 1px solid #eee;
 
+  &:last-child {
+    text-align: center;
+  }
 
+  
+`;
+
+export const ContainerTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;

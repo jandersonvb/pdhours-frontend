@@ -5,7 +5,7 @@ import { ModalContainer, Title, ButtonContainer } from "./style";
 import axios from "axios";
 
 type UserModalProps = {
-  onAddUser: (name: string, estimatedHours: number) => void;
+  onAddUser: (name: string, estimatedHours: number, squadId: string) => void;
 };
 
 export function UserModal({ onAddUser }: UserModalProps) {
@@ -21,20 +21,8 @@ export function UserModal({ onAddUser }: UserModalProps) {
       return;
     }
 
-    //acessar a API para criar o usuário
-    try {
-      const { status } = await axios.post('http://localhost:3000/employee', { name, estimatedHours, squadId });
-
-      if (status === 201) {
-        onAddUser(name, estimatedHours);
-        resetForm();
-      } else {
-        setError('Erro ao criar usuário');
-      }
-    } catch (error) {
-      console.error(error);
-      setError('Erro ao criar usuário');
-    }
+    onAddUser(name, estimatedHours, squadId);
+    resetForm();
   }
 
   const resetForm = () => {

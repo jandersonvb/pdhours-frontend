@@ -1,12 +1,14 @@
 'use client';
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Loading } from "../Loading";
 import Modal from "../Modal";
 import { SquadModal } from "../SquadModal";
 import { Table, TableContainer, Td, Th } from "./style";
+import { SquadError } from "../SquadError";
+import { useRouter } from "next/navigation";
 
 type Squad = {
   id: number;
@@ -14,29 +16,29 @@ type Squad = {
 };
 
 export function SquadTable() {
+ const router = useRouter();
+
   const [squads, setSquads] = useState<Squad[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Função para buscar as squads
+  // Função reutilizável para buscar squads
+  const fetchSquads = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('http://localhost:3000/squad');
+      setSquads(response.data);
+      setError('');
+    } catch (err) {
+      setError('Estamos com problemas para buscar as squads');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  //Busca squads
   useEffect(() => {
-    const fetchSquads = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/squad');
-
-        setSquads(response.data);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError('Estamos com problemas para buscar as squads');
-        } else {
-          setError('Erro desconhecido');
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchSquads();
   }, []);
 
@@ -64,17 +66,19 @@ export function SquadTable() {
       setIsModalOpen(false);
     } catch (error) {
       setError('Erro ao criar squad');
-      
     }
-
   };
 
+  const handleVisitSquad = (squadId: number) => {
+    router.push(`/squad/${squadId}`);  
+  };
+  
   if (loading) {
     return <Loading />;
   }
 
   if (error) {
-    return <p>Erro: {error}</p>;
+    return <SquadError onRetry={fetchSquads} onCreateSquad={handleCreateSquad} />;
   }
 
   return (
@@ -93,7 +97,7 @@ export function SquadTable() {
               <Td>{squad.id}</Td>
               <Td>{squad.name}</Td>
               <Td>
-                <Button onClick={() => { }}>Visitar squad</Button>
+                <Button onClick={() => handleVisitSquad(squad.id)}>Visitar squad</Button>
               </Td>
             </tr>
           ))}

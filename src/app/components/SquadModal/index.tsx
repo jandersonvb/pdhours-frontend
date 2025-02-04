@@ -21,19 +21,8 @@ export function SquadModal({ onAddSquad }: SquadModalProps) {
       return;
     }
 
-    try {
-      const { status } = await axios.post('http://localhost:3000/squad', { name });
-
-      if (status === 201) {
-        onAddSquad(name);
-        resetForm();
-      } else {
-        setError('Erro ao criar squad');
-      }
-    } catch (error) {
-      console.error(error);
-      setError('Erro ao criar squad');
-    }
+    onAddSquad(name);
+    resetForm();   
   };
 
   const resetForm = () => {

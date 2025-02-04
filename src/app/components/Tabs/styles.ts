@@ -9,14 +9,14 @@ export const TabsContainer = styled.div`
 `;
 
 interface TabProps {
-  active: boolean;
+  $active: boolean;
 }
 
 export const Tab = styled.div<TabProps>` 
   a {
     text-decoration: none;
-    color: ${({ active }) => (active ? '#4263EB' : '#ACB5BD')};
-    font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+    color: ${({ $active }) => ($active ? '#4263EB' : '#ACB5BD')};
+    font-weight: ${({ $active }) => ($active ? 'bold' : 'normal')};
   }
   
  font-size: 16px;
@@ -35,7 +35,7 @@ export const Tab = styled.div<TabProps>`
    width: 100%;
    height: 5px;
    background-color: #4263EB;
-   transform: scaleX(${(props) => (props.active ? 1 : 0)});  
+   transform: scaleX(${(props) => (props.$active ? 1 : 0)});  
    transform-origin: left;
    transition: transform 0.6s ease-in-out;
  }

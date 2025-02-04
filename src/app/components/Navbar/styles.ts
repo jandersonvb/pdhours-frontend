@@ -7,6 +7,7 @@ export const ContainerLogo = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  
 `
 
 

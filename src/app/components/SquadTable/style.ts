@@ -13,6 +13,7 @@ export const TableContainer = styled.div`
   flex-direction: column;
   display: flex;
 
+
   & > button {
     margin-top: 64px;
   }
@@ -21,6 +22,7 @@ export const TableContainer = styled.div`
 
 export const Table = styled.table`
   width: 100%;  
+  
 
   thead {
     background: #f4f5f7;
@@ -29,6 +31,7 @@ export const Table = styled.table`
 
   tbody tr:nth-child(odd) {
     background: #f9f9f9;
+    
   }
 
   tbody tr:hover {
@@ -37,7 +40,10 @@ export const Table = styled.table`
 
   th, td {
     padding: 12px;
-
+    
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: center;  
 
   }
 
@@ -61,9 +67,7 @@ export const Th = styled.th`
   padding: 12px;
   text-align: center;
   border-radius: 8px 8px 0 0;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+ 
 `;
 
 export const Td = styled.td`
@@ -71,7 +75,7 @@ export const Td = styled.td`
   border-bottom: 1px solid #eee;
 
   &:last-child {
-    text-align: right;
+    text-align: center;
   }
 
   
