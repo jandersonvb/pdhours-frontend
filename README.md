@@ -41,16 +41,6 @@ Este projeto é uma aplicação desenvolvida em [Next.js](https://nextjs.org/) b
   npm run dev
   ```
 
-## Estrutura do Projeto
-
-```
-.
-├── public
-├── src
-│   ├── components    # Componentes reutilizáveis
-│   ├── styles        # Estilos globais e específicos
-└──
-```
 
 ## Design no Figma
 
