@@ -8,6 +8,9 @@ export const ContainerLogo = styled.button`
   border: none;
   cursor: pointer;
   
+  &:hover {
+    opacity: 0.8;
+  }
 `
 
 

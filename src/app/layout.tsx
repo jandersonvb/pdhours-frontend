@@ -6,7 +6,7 @@ import { ContextProvider } from "./components/ContextProvider";
 export const metadata: Metadata = {
   title: "PDHours - Controle de horas",
   description: "Interface para lançamento de horas",
-
+  icons: "/favicon.png", 
 };
 
 export default function RootLayout({
@@ -16,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+     
       <body style={{ background: "#f4f5f7" }}>
         <ContextProvider>
           <Navbar />

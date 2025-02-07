@@ -3,14 +3,19 @@ import { LogoWrapper } from "./styles";
 
 import LogoImg from "../../assets/logo.png";
 
-export function Logo() {
+type LogoProps = {
+  width: number;
+  height: number;
+};
+
+export function Logo({ width, height }: LogoProps) {
   return (
     <LogoWrapper>
       <Image
         src={LogoImg}
         alt="Logo"
-        width={50}
-        height={50}
+        width={width}
+        height={height}
       />
     </LogoWrapper>
   )

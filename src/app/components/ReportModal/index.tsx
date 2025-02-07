@@ -11,17 +11,18 @@ import axios from "axios";
 
 export function ReportModal() {
   const [userId, setUserId] = useState('');
-  const [hours, setHours] = useState('');
+  const [spentHours, setSpentHours] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
 
   const handleSubmit = async () => {
     if (!userId) {
       setError("ID do usuário é obrigatório");
       return;
-    } else if (!hours) {
+    } else if (!spentHours) {
       setError("Horas gastas é obrigatório");
       return;
     } else if (!description) {
@@ -30,19 +31,25 @@ export function ReportModal() {
     }
 
     try {
-      await axios.post("https://localhost:3000/reports", {
+      await axios.post("http://localhost:3000/report", {
         userId,
-        hours,
+        spentHours,
         description,
+        
       });
 
-      setSuccess("Lanmçamento criado com sucesso!");
+      setSuccess("Lançamento criado com sucesso!");
       setUserId("");
-      setHours("");
+      setSpentHours("");
       setDescription("");
       setError("");
+      setIsModalOpen(false);
+      
     } catch (err) {
       setError("Erro ao criar o lançamento. Tente novamente.");
+      console.log(err);
+
+      console.error(err);
     }
   };
 
@@ -65,8 +72,8 @@ export function ReportModal() {
         type="text"
         label="Horas gastas"
         placeholder="Digite a quantidade de horas"
-        value={hours}
-        onChange={(e) => setHours(e.target.value)}
+        value={spentHours}
+        onChange={(e) => setSpentHours(e.target.value)}
         disabled={!!error}
       />
       <TextareaContainer>

@@ -22,7 +22,10 @@ export function Navbar() {
   return (
     <Container>
       <ContainerLogo as={Link} href="/">
-        <Logo />
+        <Logo 
+          width={50}
+          height={50}
+        />
       </ContainerLogo>
       <Header>
         <Title>PD Hours</Title>

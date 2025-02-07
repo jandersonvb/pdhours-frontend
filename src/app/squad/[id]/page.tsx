@@ -1,5 +1,6 @@
 'use client';
 
+import { Loading } from '@/app/components/Loading';
 import dynamic from 'next/dynamic';
 import { useParams } from 'next/navigation';
 
@@ -9,7 +10,7 @@ export default function SquadPage() {
   const { id } = useParams();
 
   if (!id) {
-    return <p>Carregando...</p>;
+    return <Loading />;
   }
 
   return <SquadDetail squadId={id as string} />;

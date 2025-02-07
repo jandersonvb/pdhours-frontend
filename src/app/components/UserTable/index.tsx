@@ -6,15 +6,24 @@ import axios from "axios";
 import Modal from "../Modal";
 import { UserModal } from "../UserModal";
 
+
+type Squad = {
+  id: number;
+  name: string;
+};
+
 type User = {
   id: number;
   name: string;
   estimatedHours: number;
-}
+  squad?: Squad;
+};
+
 
 export function UserTable() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [squads, setSquads] = useState<Squad[]>([]);
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -41,6 +50,31 @@ export function UserTable() {
 
     fetchUsers();
   }, []);
+
+  //Função para buscar os squads
+  useEffect(() => {
+    const fetchSquads = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/squad');
+
+        setSquads(response.data);
+      }
+      catch (err) {
+        if (err instanceof Error) {
+          setError('Estamos com problemas para buscar os squads');
+        }
+        else {
+          setError('Erro desconhecido');
+        }
+      }
+      finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSquads();
+  }, []);
+  
 
   // Função para abrir o modal
   const handleOpenUserModal = async () => {
@@ -94,7 +128,9 @@ export function UserTable() {
             <tr key={user.id}>
               <Td>{user.name}</Td>
               <Td>{user.estimatedHours}</Td>
-              <Td>{user.id}</Td>
+              <Td>
+                {user.squad ? user.squad.id : 'Sem squad'}
+              </Td>
             </tr>))}
         </tbody>
       </Table>

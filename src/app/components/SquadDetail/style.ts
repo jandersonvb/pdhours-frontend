@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 16px;
+
   
 `;
 
@@ -14,6 +15,7 @@ export const Title = styled.h1`
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: 700;
+  
 `;
 
 export const ContainerInput = styled.div`
@@ -22,6 +24,9 @@ export const ContainerInput = styled.div`
   justify-content: center;
   flex-direction: row;
   gap: 16px;
+  width: 800px;
+
+
 
   & > button {
     margin-top: 24px;
